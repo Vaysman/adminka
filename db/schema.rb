@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_09_18_093001) do
 
   create_table "user_accounts", force: :cascade do |t|
+    t.string "email"
     t.integer "role", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
