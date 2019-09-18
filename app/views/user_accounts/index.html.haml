@@ -1,0 +1,26 @@
+%h1 Аккаунты
+%table.table
+  %thead
+    %tr
+      %th ID
+      %th Роль пользователя
+  %tbody
+    -@accounts.each do |account|
+      %tr
+        %td #{account.id}
+        %td 
+          .btn-group
+            %button.btn.btn-primary.btn-sm
+              = account.role
+            %button.btn.btn-primary.dropdown-toggle.dropdown-toggle-split{"data-toggle": "dropdown"}
+            .dropdown-menu
+              .dropdown-item
+                = form_for account, url: user_account_path(account) do |f|
+                  = f.hidden_field :role
+                  = hidden_field_tag 'role', 'user'
+                  = f.submit "User"
+              .dropdown-item
+                = form_for account, url: user_account_path(account) do |f|
+                  = f.hidden_field :role
+                  = hidden_field_tag 'role', 'admin'
+                  = f.submit "Admin"
